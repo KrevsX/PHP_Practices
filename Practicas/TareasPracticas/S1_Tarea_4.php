@@ -9,6 +9,7 @@
     <script src='main.js'></script>
 </head>
 <body>
+
 4. Cree un script PHP embebido que escriba en una etiqueta h1 si un
 número es cero, positivo o negativo.<br><br>
 <div>

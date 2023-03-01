@@ -1,3 +1,5 @@
+
+
 2. Cree un script PHP que escriba Aprobado si la nota es mayor que 7,<br>
 caso contrario escriba Reprobado.<br><br>
 

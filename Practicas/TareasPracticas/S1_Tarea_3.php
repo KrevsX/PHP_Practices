@@ -9,6 +9,7 @@
     <script src='main.js'></script>
 </head>
 <body>
+
 3. Cree un script PHP embebido que evalúe dos números y muestre en un<br>
 div el mensaje los números son menores que 10 si ambos cumplen la condición.<br><br>
 <b> 
