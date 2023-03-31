@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de empleados</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<style>
+		form {
+			margin-bottom: 20px;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+    <body>
+        <h1>Registro de empleados</h1>
+        <button id="agregar">Agregar empleado</button>
+        <div id="empleados"></div>
+        <button id="mostrar">Mostrar datos</button>
+        <div id="datos"></div>
+        <script>
+            $(document).ready(function() {
+                var contador = 0;
+    
+                // Función para agregar un nuevo formulario de empleado
+                function agregarFormulario() {
+                    contador++;
+    
+                    // Crea el formulario para el empleado
+                    var formulario = $('<form></form>').appendTo('#empleados');
+                    $('<div></div>').appendTo(formulario).append('<label for="nombre' + contador + '">Nombres:</label>').append('<input type="text" id="nombre' + contador + '" name="nombre' + contador + '">');
+                    $('<div></div>').appendTo(formulario).append('<label for="edad' + contador + '">Edad:</label>').append('<input type="number" id="edad' + contador + '" name="edad' + contador + '">');
+                    $('<div></div>').appendTo(formulario).append('<label for="nacionalidad' + contador + '">Nacionalidad:</label>').append('<select id="nacionalidad' + contador + '" name="nacionalidad' + contador + '"><option value="">-- Selecciona una opción --</option><option value="Mexicana">Mexicana</option><option value="Estadounidense">Estadounidense</option><option value="Canadiense">Canadiense</option></select>');
+                    $('<div></div>').appendTo(formulario).append('<label for="cargo' + contador + '">Cargo:</label>').append('<select id="cargo' + contador + '" name="cargo' + contador + '"><option value="">-- Selecciona una opción --</option><option value="Gerente">Gerente</option><option value="Supervisor">Supervisor</option><option value="Trabajador">Trabajador</option></select>');
+                    $('<div></div>').appendTo(formulario).append('<label>Pasatiempos:</label>').append('<input type="checkbox" name="pasatiempos' + contador + '[]" value="Leer"> Leer').append('<input type="checkbox" name="pasatiempos' + contador + '[]" value="Cine"> Cine').append('<input type="checkbox" name="pasatiempos' + contador + '[]" value="Deporte"> Deporte');
+                    $('<div></div>').appendTo(formulario).append('<label for="direccion' + contador + '">Dirección:</label>').append('<textarea id="direccion' + contador + '" name="direccion' + contador + '"></textarea>');
+                }
+    
+                // Agrega el primer formulario al cargar la página
+                agregarFormulario();
+    
+                // Agrega un nuevo formulario al hacer clic en el botón "Agregar empleado"
+                $('#agregar').on('click', function() {
+                    agregarFormulario();
+                });
+    
+                // Captura los datos de todos los formularios al hacer clic en el botón "Mostrar datos"
+                $('#mostrar').on('click', function() {
+                    var datos = '';
+    
+                    // Recorre todos los formularios
+                    $('form').each(function() {
+                        var nombre = $(this).find('input[name^="nombre"]').val();
+                        var edad = $(this).find('input[name^="edad"]').val();
+                        var nacionalidad = $(this).find('select[name^="nacionalidad"]').val();
+                        var cargo = $(this).find('select[name^="cargo"]').val();
+                        var pasatiempos = '';
+                        $(this).find('input[name^="pasatiempos"]').each(function() {
+                        if ($(this).is(':checked')) {
+                        pasatiempos += $(this).val() + ', ';
+                        }
+                        });
+                        var direccion = $(this).find('textarea[name^="direccion"]').val();
+                        				// Agrega los datos del empleado al string de datos
+				datos += '<p><strong>Nombres:</strong> ' + nombre + '</p>';
+				datos += '<p><strong>Edad:</strong> ' + edad + '</p>';
+				datos += '<p><strong>Nacionalidad:</strong> ' + nacionalidad + '</p>';
+				datos += '<p><strong>Cargo:</strong> ' + cargo + '</p>';
+				datos += '<p><strong>Pasatiempos:</strong> ' + pasatiempos + '</p>';
+				datos += '<p><strong>Dirección:</strong> ' + direccion + '</p>';
+				datos += '<hr>';
+			});
+
+			// Muestra los datos de todos los empleados
+			$('#datos').html(datos);
+		});
+	});
+</script>
+
+    
+    
+</body>
+</html>

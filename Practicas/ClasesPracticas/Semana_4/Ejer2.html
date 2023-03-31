@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Números pares e impares</title>
+</head>
+<body>
+	<h1>Números pares e impares</h1>
+	<form>
+		<div>
+			<label for="numero1">Número 1:</label>
+			<input type="number" id="numero1" name="numero1" required>
+		</div>
+		<div>
+			<label for="numero2">Número 2:</label>
+			<input type="number" id="numero2" name="numero2" required>
+		</div>
+		<button type="submit">Calcular</button>
+	</form>
+	<div id="resultado"></div>
+	<script>
+		// Función que se ejecuta cuando se envía el formulario
+		document.querySelector('form').addEventListener('submit', function(event) {
+			event.preventDefault(); // Evita que se envíe el formulario por defecto
+
+			// Obtiene los valores ingresados en el formulario
+			var numero1 = parseInt(document.querySelector('#numero1').value);
+			var numero2 = parseInt(document.querySelector('#numero2').value);
+
+			// Verifica cuál es el número menor y mayor
+			var menor = numero1 < numero2 ? numero1 : numero2;
+			var mayor = numero1 > numero2 ? numero1 : numero2;
+
+			// Variables para contar el número de pares e impares
+			var pares = 0;
+			var impares = 0;
+
+			// Variable para almacenar los números pares e impares
+			var numerosPares = [];
+			var numerosImpares = [];
+
+			// Recorre todos los números en el rango
+			for (var i = menor; i <= mayor; i++) {
+				if (i % 2 === 0) { // Si es par
+					pares++;
+					numerosPares.push(i);
+				} else { // Si es impar
+					impares++;
+					numerosImpares.push(i);
+				}
+			}
+
+			// Crea el mensaje de salida
+			var mensaje = 'En el rango de ' + menor + ' a ' + mayor + ', hay ' + pares + ' número(s) par(es) y ' + impares + ' número(s) impar(es).';
+
+			if (pares > 0) { // Si hay números pares
+				mensaje += ' Los números pares son: ' + numerosPares.join(', ');
+			}
+
+			if (impares > 0) { // Si hay números impares
+				mensaje += ' Los números impares son: ' + numerosImpares.join(', ');
+			}
+
+			// Muestra el resultado en el DIV correspondiente
+			document.querySelector('#resultado').textContent = mensaje;
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 2</title>
+    <style>
+        body {
+            background-color: rgb(55, 67, 71);
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5
+        t8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+        </script>
+    <script>
+        $(document).ready(function () {
+            $("form").submit(function (event) {
+                event.preventDefault();
+                var info = $(this).serialize();
+                $.ajax({
+                    url: "procesos.php",
+                    method: "POST",
+                    data: info,
+                    success: function (response) {
+                        $("#tdatos").html(response);
+                    }
+                });
+            });
+        });    
+    </script>
+</head>
+
+<body>
+    <div class="container mx-auto m-2">
+        <div class="row">
+            <div class="col-9 mx-auto">
+                <h1 align="center">FORMULARIO.</h1>
+                <hr>
+                <form>
+                    <div class="row g-3">
+                        <div class="col">
+                            <label>NOMBRES</label>
+                            <input type="text" name="nombre1" id="nombre1" class="form-control"
+                                placeholder="Primer Nombre" aria-label="valor2" required>
+                        </div>
+                        <div class="col">
+                            <label></label>
+                            <input type="text" name="nombre2" id="nombre2" class="form-control"
+                                placeholder="Segundo Nombre" aria-label="valor2">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row g-3">
+                        <div class="col">
+                            <label>APELLIDOS</label>
+                            <input type="text" name="apellido1" id="apellido1" class="form-control"
+                                placeholder="Primer Apellido" aria-label="valor2" required>
+                        </div>
+                        <div class="col">
+                            <label></label>
+                            <input type="text" name="apellido2" id="apellido2" class="form-control"
+                                placeholder="Segundo Apellido" aria-label="valor2">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row g-3">
+                        <div class="col">
+                            <label># DUI:</label>
+                            <input type="number" class="form-control" id="dui" name="dui" placeholder="Ex: 1511616513"
+                                required style="width: 170px">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row g-3">
+                        <div class="col">
+                            <label>DIRECCION</label>
+                            <textarea class="form-control" id="direccion" rows="2" name="direccion"></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row g-3">
+                        <div class="col">
+                            <label>CARRERAS</label>
+                            <select name=" carrera" id="carrera" class="form-select" aria-label="Default select example"
+                                aria-label=".form-select-lg example">
+                                <option selected>SELECIONA TU PROFESION...</option>
+                                <option value="Licenciatura en Contaduria Publica">Licenciatura en Contaduria Publica
+                                </option>
+                                <option value="Licenciatura en Mercadeo">Licenciatura en Mercadeo</option>
+                                <option value="Licenciatura en Educacion">Licenciatura en Educacion</option>
+                                <option value="Ingenieria Industrial">Ingenieria Industrial</option>
+                                <option value="Ingenieria Quimica">Ingenieria Quimica</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row g-3">
+                        <label>PAISES</label>
+                        <div class="col">
+                            <input class="form-check-input" type="radio" name="pais" value="EL SALVADOR">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                EL SALVADOR
+                            </label>
+                        </div>
+                        <div class="col">
+                            <input class="form-check-input" type="radio" name="pais" value="COLOMBIA">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                COLOMBIA
+                            </label>
+                        </div>
+                        <div class="col">
+                            <input class="form-check-input" type="radio" name="pais" value="RUSIA">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                RUSIA
+                            </label>
+                        </div>
+                        <div class="col">
+                            <input class="form-check-input" type="radio" name="pais" value="CANADA">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                CANADA
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row g-3">
+                        <label>DEPORTES FAVORITOS</label>
+                        <div class="col">
+                            <input class="form-check-input" type="checkbox" name="dpfav[]" value="BASEBALL">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                BASEBALL
+                            </label>
+                        </div>
+                        <div class="col">
+                            <input class="form-check-input" type="checkbox" name="dpfav[]" value="BASKETBALL">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                BASKETBALL
+                            </label>
+                        </div>
+                        <div class="col">
+                            <input class="form-check-input" type="checkbox" name="dpfav[]" value="RUGBY">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                RUGBY
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row g-3">
+                        <label>COLORES FAVORITOS</label>
+                        <div class="col">
+                            <input class="form-check-input" type="checkbox" value="CELESTE" name="colfav[]">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                CELESTE
+                            </label>
+                        </div>
+                        <div class="col">
+                            <input class="form-check-input" type="checkbox" value="MORADO" name="colfav[]">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                MORADO
+                            </label>
+                        </div>
+                        <div class="col">
+                            <input class="form-check-input" type="checkbox" value="VERDE OSCURO" name="colfav[]">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                VERDE OSCURO
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="d-grid mt-1">
+                        <button type="submit" class="btn btn-dark">ENVIAR</button>
+                    </div>
+                </form><br>
+            </div>
+        </div>
+    </div>
+    <div id="tdatos"></div>
+</body>
+
+</html>

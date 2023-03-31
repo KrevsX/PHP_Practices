@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 3</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5
+        t8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+        </script>
+    <style>
+        body {
+            background-color: rgb(55, 67, 71);
+        }
+
+        .circulo {
+            width: 150px;
+            height: 150px;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+            background: #93329e;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#ocultar").click(function () {
+                $(".circulo").hide();
+            });
+            $("#mostrar").click(function () {
+                $(".circulo").show();
+            });
+            $("#mosocu").click(function () {
+                $(".circulo").toggle();
+            });
+            $("#fadout").click(function () {
+                $(".circulo").fadeOut(1000);
+            });
+            $("#fadin").click(function () {
+                $(".circulo").fadeIn(1000);
+            });
+            $("#camcol").click(function () {
+                var randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+                $(".circulo").css("background-color", randomColor);
+            });
+        });
+        $(document).ready(function () {
+            var originalWidth = $(".circulo").width();
+            var originalHeight = $(".circulo").height();
+
+            $("#camtam").click(function () {
+                if ($(".circulo").width() == originalWidth) {
+                    $(".circulo").animate({
+                        width: "50px",
+                        height: "50px"
+                    });
+                } else if ($(".circulo").width() == "50") {
+                    $(".circulo").animate({
+                        width: "100px",
+                        height: "100px"
+                    });
+                } else if ($(".circulo").width() == "100") {
+                    $(".circulo").animate({
+                        width: "150px",
+                        height: "150px"
+                    });
+                } else if ($(".circulo").width() == "150") {
+                    $(".circulo").animate({
+                        width: "200px",
+                        height: "200px"
+                    });
+                } else {
+                    $(".circulo").animate({
+                        width: originalWidth,
+                        height: originalHeight
+                    });
+                }
+            });
+        });
+    </script>
+
+<body>
+    <div class="container mx-auto m-3">
+        <div class="row">
+            <div class="col-2 mx-auto">
+                <h1 align="center">.</h1>
+                <hr>
+                <div class="row g-6">
+                    <div class="col">
+                        <div class="circulo" style="align-items: center;">
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row m-2">
+        <div class="col">
+            <button type="button" class="btn btn-dark" id="ocultar">OCULTAR</button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-dark" id="mostrar">MOSTRAR</button>
+        </div>
+        <div class="col">
+            <button type="button" style="width:200px" class="btn btn-dark" id="mosocu">MOSTRAR-OCULTAR</button>
+        </div>
+        <div class="col">
+            <button type="button" style="width:200px" class="btn btn-dark" id="camtam">CAMBIAR TAMANO</button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-dark" id="fadout">OCULTAR/EFECTO</button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-dark" id="fadin">MOSTRAR/EFECTO</button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-dark" id="camcol">CAMBIAR COLOR</button>
+        </div>
+    </div>
+</body>
+
+</html>

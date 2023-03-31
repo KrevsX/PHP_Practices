@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ejemplo de jQuery</title>
+	<style>
+		.circulo {
+			width: 150px;
+			height: 150px;
+			-moz-border-radius: 50%;
+			-webkit-border-radius: 50%;
+			border-radius: 50%;
+			background: #93329e;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			// Ocultar el elemento
+			$("#ocultar").click(function(){
+				$(".circulo").hide();
+			});
+
+			// Mostrar el elemento
+			$("#mostrar").click(function(){
+				$(".circulo").show();
+			});
+
+			// Mostrar/ocultar el elemento
+			$("#alternar").click(function(){
+				$(".circulo").toggle();
+			});
+
+			// Cambiar el tamaño del elemento
+			$("#cambiarTamaño").click(function(){
+				$(".circulo").animate({width: "200px", height: "200px"});
+			});
+
+			// Ocultar el elemento con efecto FadeOut
+			$("#fadeOut").click(function(){
+				$(".circulo").fadeOut();
+			});
+
+			// Mostrar el elemento con efecto FadeIn
+			$("#fadeIn").click(function(){
+				$(".circulo").fadeIn();
+			});
+
+			// Cambiar el color de fondo del elemento
+			$("#cambiarColor").click(function(){
+				$(".circulo").css("background-color", "#4CAF50");
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="circulo"></div>
+	<button id="ocultar">Ocultar</button>
+	<button id="mostrar">Mostrar</button>
+	<button id="alternar">Mostrar/ocultar</button>
+	<button id="cambiarTamaño">Cambiar tamaño</button>
+	<button id="fadeOut">Ocultar con efecto</button>
+	<button id="fadeIn">Mostrar con efecto</button>
+	<button id="cambiarColor">Cambiar color</button>
+</body>
+</html>
